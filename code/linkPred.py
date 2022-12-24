@@ -84,9 +84,6 @@ def get_dataset_from_embedding(embeddings, pos_edges, neg_edges, op='mean'):
 
 
 def linkPred(embedding):
-    #pathing = 'data/outcome/outcome_c2.txt'
-    #embeddings_path = 'data/cacit_all1.txt'
-    #embeddings = load_node_embeddings(embeddings_path)
     embeddings = embedding
     edges_save_basepath = '../data/forum/forum_'
     pos_edges, neg_edges = load_edges(edges_save_basepath)
@@ -98,7 +95,7 @@ def linkPred(embedding):
     print(len(X_test))
     print(len(y_train))
     print(len(y_test))
-    logReg = LogisticRegression(max_iter = 800, n_jobs=16)
+    logReg = LogisticRegression(max_iter = 500, n_jobs=16)
     logReg.fit(X_train, y_train)
 
     y_pred = logReg.predict(X_test)

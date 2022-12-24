@@ -125,18 +125,6 @@ def Matrix_Based(k,edge_sizes,T_lenth):
     E_m = Proportion(E_m)
     matrix_r = E_m
     print("Proportion Done")
-    '''
-    S_mid = np.dot(Degree,A_m)
-    S_mid = Proportion(S_mid)
-    S_mid2 = deepcopy(S_mid)
-    Final_S = deepcopy(S_mid)
-    print("MD start")
-    for i in range(1,T_lenth):
-        S_mid2 = S_mid2@S_mid
-        Final_S += S_mid2
-        #S_1 = Proportion(S_1)
-        print(i)
-    '''
     matrix = np.log(matrix_r*edge_sizes,where=(matrix_r!=0))
     return matrix
 

@@ -34,23 +34,6 @@ def load_data_as_graph(path='network_data/forum.txt', weight_idx=0, time_idx=2):
 
 
 
-'''def create_embedding_and_training_data_old(g, train_edges_fraction=0.1):
-    edges = sorted(g.edges(data=True), key=lambda x: x[2]['time'])
-    num_edges = len(edges)
-
-    # training edges
-    num_train_edges = int(train_edges_fraction * num_edges)
-    train_edges = edges[:num_train_edges]
-
-    # link prediction positive edges
-    pos_edges = edges[num_train_edges:]
-    neg_edges = []
-    for i in range(len(pos_edges)):
-        n_edge = get_negative_edge(g)
-        neg_edges.append(n_edge)
-
-    return train_edges, pos_edges, neg_edges
-'''
 
 def create_embedding_and_training_data(g, train_edges_fraction=0.1):
     '''
@@ -88,19 +71,6 @@ def create_embedding_and_training_data(g, train_edges_fraction=0.1):
         else:
             train_edges.append(e)
 
-    '''for node in nodes:
-        edges_of_node = []
-        for e in g.edges(node, data=True): # only gets outgoing edges
-            edges_of_node.append(e)
-        edges_of_node = sorted(edges_of_node, key=lambda x: x[2]['time'])
-        num_edges = len(edges_of_node)
-
-            # training edges per node
-        num_train_edges = int(train_edges_fraction * num_edges)
-        train_edges.extend(edges_of_node[:num_train_edges+1])
-
-            # link prediction positive edges
-        pos_edges.extend(edges_of_node[max(num_train_edges-1,0):])'''
     train_edges = sorted(train_edges, key=lambda x: x[2]['time'])
     print(len(train_edges))
     print(len(pos_edges))
